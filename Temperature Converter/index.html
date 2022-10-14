@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Temperature converter</title>
+</head>
+
+<body>
+
+
+  <div class="container11">
+    <div class="container1">
+      <h3 align="center">Temperature converter</h3>
+      <form>
+        <div class="row">
+          <div class="col">
+            <label for="quantity">Degrees °C</label>
+            <input type="number" class="form-control" id="quantity">
+          </div>
+          <pre>
+          </pre>
+          <div class="state">
+            <label for="inputState">State</label>
+            <select id="inputState" class="form-control">
+              <option value="fahrenheit" selected>Fahrenheit</option>
+              <option value="celsius">Celsius</option>
+              <option value="kelvin">Kelvin</option>
+            </select>
+          </div>
+          <center>
+          <div class="col">
+            <button id="btn" class="btn" >Convert</button>
+          </div>
+        </center>
+        </div>
+        <div class="result">
+          <p>Result:</p>
+          <div id="result" class="col">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    const btn = document.getElementById('btn');
+    const degrees = document.getElementById('quantity');
+    const state = document.getElementById('inputState');
+    let result = document.getElementById('result');
+
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      console.log(state.value);
+      if (!degrees.value) {
+        result.innerHTML = 'Please enter the degrees value (as a number)!';
+      }
+
+      else if (state.value == 'fahrenheit' && degrees.value != '') {
+        result.innerHTML = parseFloat(degrees.value) * 9 / 5 + 32 + ' °F';
+      }
+      else if (state.value == 'celsius' && degrees.value != '') {
+        result.innerHTML = parseFloat(degrees.value) + ' °C';
+      }
+      else if (state.value == 'kelvin' && degrees.value != '') {
+        result.innerHTML = parseFloat(degrees.value) + 273.15 + ' K';
+      }
+
+    });
+  </script>
+</body>
+
+</html>
